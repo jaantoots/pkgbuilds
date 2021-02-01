@@ -1,0 +1,20 @@
+pkgname=pacman-kernel-install
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="pacman hooks for kernel-install"
+arch=('any')
+license=('GPL3')
+depends=('systemd' 'bash')
+source=('kernel-install'
+        'kernel-remove'
+        '90-kernel-install.hook'
+        '60-kernel-remove.hook')
+sha256sums=('1f64607ed5f459c5303fa18c3f385ee5599dd3a6c7cbbb9efcff811db50fe43f'
+            '5d47d2686d4231188a6e889aef5bb57a50942de4fc89cc6932559a8f8d6abcee'
+            'ac1c1352abb7f340533065a822820429f7dd9b112a0767cc18dc48d5a9a9a4dc'
+            '2f11c34fe757b4b3a572879b2b9f2e0edfb1fba62da5a3f46296bb6a20ff0ecd')
+
+package() {
+    install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" *.hook
+    install -Dm644 -t "$pkgdir/usr/share/libalpm/scripts" kernel-*
+}
