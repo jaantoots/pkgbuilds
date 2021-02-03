@@ -1,0 +1,15 @@
+pkgname=systemd-mbsync-timer
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="systemd service and timer for mbsync"
+arch=('any')
+license=('GPL3')
+depends=('systemd' 'isync' 'notmuch')
+source=('mbsync.service'
+        'mbsync.timer')
+sha256sums=('f4c449c894bf85bec305942f8a7833422d7605bdca215cacb9436affe2bc9254'
+            'c8bdfc52bbd732a525e28ff82f95dac395993a78eef26967b361aa65ed13ecc3')
+
+package() {
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/user" mbsync.*
+}
