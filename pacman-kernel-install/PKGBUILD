@@ -1,6 +1,6 @@
 pkgname=pacman-kernel-install
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="pacman hooks for kernel-install"
 arch=('any')
 license=('GPL3')
@@ -16,5 +16,5 @@ sha256sums=('1f64607ed5f459c5303fa18c3f385ee5599dd3a6c7cbbb9efcff811db50fe43f'
 
 package() {
     install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" *.hook
-    install -Dm644 -t "$pkgdir/usr/share/libalpm/scripts" kernel-*
+    install -Dm755 -t "$pkgdir/usr/share/libalpm/scripts" kernel-*
 }
