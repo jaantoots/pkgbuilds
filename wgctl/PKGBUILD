@@ -1,0 +1,13 @@
+pkgname=wgctl
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="wireguard profile switcher"
+arch=('any')
+license=('GPL3')
+depends=('systemd' 'wireguard-tools' 'rofi' 'fzf')
+source=('wgctl')
+sha256sums=('1dcdca71dc98168f82ce56f9c96e061837f719021b11e0be2755a9f09436310f')
+
+package() {
+    install -Dm755 -t "$pkgdir/usr/bin" wgctl
+}
