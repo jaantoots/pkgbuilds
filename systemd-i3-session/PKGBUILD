@@ -1,0 +1,13 @@
+pkgname=systemd-i3-session
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="systemd integration for i3"
+arch=('any')
+license=('GPL3')
+depends=('systemd')
+source=('i3-session.target')
+sha256sums=('142d72a78a72af7b82d99ca61f3227008e653f4a58d7412655bf0b22bce407b9')
+
+package() {
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/user" i3-session.target
+}
