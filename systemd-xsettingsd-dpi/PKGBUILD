@@ -1,0 +1,16 @@
+pkgname=systemd-xsettingsd-dpi
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="systemd integration and DPI control for xsettingsd"
+arch=('any')
+license=('GPL3')
+depends=('systemd' 'xsettingsd' 'xorg-xrdb')
+source=('xsettingsd.service'
+        'set-dpi')
+sha256sums=('8bf3176db511b341c1c57c4740feb74091129d532407e210558074ef2ac045b4'
+            'e1d87df85989ba008dfb7121c58567c9423aab0ebd7d75573f82f2b7235dfe38')
+
+package() {
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/user" xsettingsd.service
+    install -Dm755 -t "$pkgdir/usr/bin" set-dpi
+}
