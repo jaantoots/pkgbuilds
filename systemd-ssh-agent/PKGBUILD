@@ -1,0 +1,17 @@
+pkgname=systemd-ssh-agent
+pkgver=0.0.1
+pkgrel=1
+epoch=1
+pkgdesc="systemd service for ssh-agent"
+arch=('any')
+license=('GPL3')
+depends=('systemd' 'openssh')
+source=('ssh-agent.service'
+        'ssh-auth-sock.sh')
+sha256sums=('551aca5a6032f3fcf0c7c43a909984c4b0fba520795c56dc7b77b8a295172fa2'
+            '2b78a0b869ce391ffdf69cdbbba68995dbeab3b553189af5a77af4392b1eca8c')
+
+package() {
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/user" ssh-agent.service
+    install -Dm644 -t "$pkgdir/etc/profile.d" ssh-auth-sock.sh
+}
